@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>VUE</title>
+  <script src="https://cdn.bootcss.com/vue/2.4.2/vue.min.js"></script>
+  <style>
+    .on{
+      color:red;
+    }
+    .off{
+      color:blue;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <ul>
+      <li :class="{on:isSelect==1}" @click="tab(1)">花坂结衣</li>
+      <li :class="{on:isSelect==2}" @click="tab(2)">七桥御乃梨</li>
+      <li :class="{on:isSelect==3}" @click="tab(3)">天月真白</li>
+    </ul>
+    <div>
+      <p v-show="isSelect==1">花坂结衣</p>
+      <p v-show="isSelect==2">七桥御乃梨</p>
+      <p v-show="isSelect==3">天月真白</p>
+    </div>
+
+    <select v-model="girlfriend">
+      <option v-for="nvzhu in girlfriends" :value="nvzhu">{{nvzhu}}</option>
+    </select>
+    <h2 :class="{on:IsSelect}">{{girlfriend}}</h2>
+
+    <div>我永远喜欢{{onename}}</div>
+    <div>我永远喜欢{{twoname}}</div>
+    <br>
+    <input type="text" v-model="onename" />
+    <br><br>
+    <textarea v-model="twoname"></textarea>
+    <div>我永远喜欢蝶祈</div>
+    <h3>{{fourname}}</h3>
+  </div>
+
+<script>
+new Vue({
+  el:'#app',
+  data:{
+    isSelect:2,
+    girlfriends:["雪村葵","仓上日向","齐藤枫","青羽心夏"],
+    girlfriend:"青羽心夏",
+    IsSelect:true,
+    onename:"黑雪姬",
+    twoname:"椎名真白",
+    fourname:"雨天思念"
+  },
+  methods:{
+    tab:function(index){
+      this.isSelect = index
+    }
+  }
+})
+</script>
+</body>
+</html>
